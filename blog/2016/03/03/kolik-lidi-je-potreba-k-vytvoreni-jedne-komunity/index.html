@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kolik lidí je potřeba k vytvoření jedné komunity? | Tomáš Votruba - Nette a Symfony školení</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+                <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9:all.js"></script>
+
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/prism.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="google-site-verification" content="8AQYRvJvZguoIfpFPVXwN2uxwiDJ_wj9qTbklsLvu54" />
+
+            <meta property="og:type" content="article" />
+    <meta property="og:title" content="Kolik lidí je potřeba k vytvoření jedné komunity?" />
+    <meta property="og:description" content="CEO České Symfony komunity. Vedoucí, evangelista, ten co dělá tu Symfony komunitu... Tak mi mnozí z vás občas říkají. Já se však pořád nemůžu zbavit pocitu, že za Symfony komunitou, tak jak ji známe v její dnešní podobě, nejsou vidět ty desítky dalších tváří, na kterých to celé stojí. Tváří lidí, kteří k ní přispěli malým či velkým dílem, kteří mě nakopli, a kteří mi pomáhají víc, než si sami vůbec uvědomují. Bez nich by tady totiž dnes nebylo vůbec nic. A proto bych vám o nich dnes rád řekl." />
+    <meta property="og:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+    <meta property="og:url" content="http://www.tomasvotruba.cz/blog/2016/03/03/kolik-lidi-je-potreba-k-vytvoreni-jedne-komunity" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Kolik lidí je potřeba k vytvoření jedné komunity?" />
+    <meta name="twitter:description" content="CEO České Symfony komunity. Vedoucí, evangelista, ten co dělá tu Symfony komunitu... Tak mi mnozí z vás občas říkají. Já se však pořád nemůžu zbavit pocitu, že za Symfony komunitou, tak jak ji známe v její dnešní podobě, nejsou vidět ty desítky dalších tváří, na kterých to celé stojí. Tváří lidí, kteří k ní přispěli malým či velkým dílem, kteří mě nakopli, a kteří mi pomáhají víc, než si sami vůbec uvědomují. Bez nich by tady totiž dnes nebylo vůbec nic. A proto bych vám o nich dnes rád řekl." />
+    <meta name="twitter:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+
+        <link rel="alternate" type="application/atom+xml" href="http://www.tomasvotruba.cz/atom.xml" title="Tomáš Votruba - Nette a Symfony školení články" />
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                    document,'script','//connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '201338863559186');
+            fbq('track', "PageView");</script>
+        <noscript><img height="1" width="1" style="display:none"
+                       src="https://www.facebook.com/tr?id=201338863559186&ev=PageView&noscript=1"
+            /></noscript>
+        <!-- End Facebook Pixel Code -->
+    </head>
+    <body>
+        <div class="body">
+
+            <header class="header">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Menu</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="logo"><a href="/">Tomáš Votruba</a></li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/reference">Reference</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/skoleni">Co vám můžu předat</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/blog">Blog</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/cenik">Ceník</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/kontakt">Kontakt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="mainContent">
+                
+<div class="page">
+    <div class="container">
+        <div class="main">
+            <article class="blog-post">
+    
+    <header>
+        <h1>
+            <a href="/blog/2016/03/03/kolik-lidi-je-potreba-k-vytvoreni-jedne-komunity">Kolik lidí je potřeba k vytvoření jedné komunity?</a>
+        </h1>
+
+        <ul class="list-inline list-inline-box">
+    <li class="hidden-xs">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2016-03-Thu">3. 3. 2016</time>
+    </li>
+
+            <li>
+            <em class="fa fa-tags fa-fw"></em>
+                            <a href="/blog/clanky-o/Symfony">Symfony</a>,                             <a href="/blog/clanky-o/komunita">komunita</a>,                             <a href="/blog/clanky-o/p%C5%99%C3%A1tel%C3%A9">přátelé</a>                    </li>
+    
+    <li>
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>5 minut čtení</strong>
+    </li>
+
+    <li>
+        <em class="fa fa-fw fa-comments"></em>
+        <a href="http://tomasvotruba.cz/blog/2016/03/03/kolik-lidi-je-potreba-k-vytvoreni-jedne-komunity/#disqus_thread">
+            Komentáře
+        </a>
+    </li>
+</ul>
+
+    </header>
+
+    <div>
+                    <p class="perex">CEO České Symfony komunity. Vedoucí, evangelista, ten co dělá tu Symfony komunitu... Tak mi mnozí z vás občas říkají. Já se však pořád nemůžu zbavit pocitu, že za Symfony komunitou, tak jak ji známe v její dnešní podobě, nejsou vidět ty desítky dalších tváří, na kterých to celé stojí. Tváří lidí, kteří k ní přispěli malým či velkým dílem, kteří mě nakopli, a kteří mi pomáhají víc, než si sami vůbec uvědomují. Bez nich by tady totiž dnes nebylo vůbec nic. A proto bych vám o nich dnes rád řekl.</p>
+
+<p>Po prvním pražském srazu v Jobs.cz už to začalo vypadat, že tu naše komunita je, a že se jí daří. Že za tím nestojím jen já, ale dalších 15-20 lidí, to už vidět není. Co všechno tomu předcházelo a o jakých lidech, kteří přinesli Symfony k nám, tady mluvím?</p>
+
+<h2>Jak to všechno začalo?</h2>
+
+<p><a href="https://filip-prochazka.com">Filip Procházka</a> integroval Symfony\Console do Nette. Kdyby nebylo Filipa, tak se se Symfony nikdy nepotkám.</p>
+
+<p><em>Díky Ti, Filipe, žes mi pomohl udělat první krok!</em></p>
+
+<p><br></p>
+
+<p>Když jsem pak přebíral roční službu maintainera <a href="https://github.com/ApiGen">ApiGenu</a>, troufale jsem se odvážil přepsat custom CLI skript na Symfony\Console. Příjemně mě překvapilo, že jsem ji stihl celou nastudovat během jedné cesty autobusem z Prahy do Liberce.</p>
+
+<p><em>Díky vám <a href="https://twitter.com/kukulich">Jardo Hanslíku</a> a <a href="https://twitter.com/andrewsville">Ondřeji Nešpore</a> za předání tohohle projektu!</em></p>
+
+<p><br></p>
+
+<p>Pak jsem začal hledat "Symfony" na českém Twitteru a spontánně tweetnul 3 lidem, že bych se s nimi rád potkal. Na jaře 2015 se mi ozval programátor stojící za stvoření skrz.cz, <a href="http://motvicka.cz/">Adam Motvička</a>. Potkali jsme se na <a href="https://www.facebook.com/events/848674628536913">otvíračce Brněnského Hubu</a>, kde mi řekl, že taky plánuje zrealizovat první setkání českých Symfony programátorů. Já už jsem nad tím uvažoval dlouho a tohle mě pořádně nakoplo k tomu, přejít konečně od vymýšlení k realizaci.</p>
+
+<p><em>Díky Adame za vykopnutí mě mimo komfortní zónu!</em></p>
+
+<p><br></p>
+
+<p>Během dubna 2015 jsem pak napsal <a href="https://twitter.com/mayermartin">Martinovi Mayerovi</a> a <a href="https://twitter.com/hasonm">Martinovi Hasoňovi</a>. Lidem, které jsem považoval za české Symfony špičky. Martin Hasoň přispíval už léta do Symfony na Githubu. K tomu se přidal <a href="https://twitter.com/spicimedved">Petr Jaša</a>, který s ním <a href="https://www.webuni.cz/">Symfony školí</a>.</p>
+
+<p><em>Díky chlapi za pomalý rozjezd a 3 minisrazy ve Falku, kde jsme si to mohli zkusit v malém a položit spolu základní kámen Symfony komunity!</em></p>
+
+<h2>BC break - z Brna do Prahy</h2>
+
+<p>Pak nastal zvrat. V květnu jsem se neplánovaně stěhoval do Prahy. Nad brněnskou Symfony komunitou tak zůstal viset velký otazník.</p>
+
+<p>Dozvěděl jsem se, že v Symfony dělá <a href="https://twitter.com/kutny">Jirka Koutný</a>. Ten mi řekl o <a href="http://srazy.info/prvni-zf-meetup-praha/5472">Zend srazu</a>. Tam jsem potkal dalších 10 lidí, které Symfony zajímá.</p>
+
+<p><em>Díky Jirko za první kontakt s Prahou! Hodně mě to nakoplo.</em></p>
+
+<p><br></p>
+
+<p>Pak mi nečekaně zavolal Martin Mayer, jestli to v Brně může převzít a jestli je to pro mě ok. Bylo to více než ok a Martin s kluky to tam vlastně organizují dodnes.</p>
+
+<p><em>Díky Martine za ten telefonát a za všechnu tvoji pomoc.</em></p>
+
+<p><br></p>
+
+<p>Na Zend srazu jsem potkal <a href="https://twitter.com/OndraM">Ondru Machuldu</a> z Jobs.cz, který se mého nápadu na Symfony komunitu chytnul. Naplánovali jsme první reálné kroky a vyrazili na cestu. Ondra přišel s tím, že 1. sraz by měl být až na podzim. Cože? Tak dlouho čekat? Ale dávalo to smysl, protože přes léto byla spousta lidí pryč. Ty 2 měsíce čekání, než se něco spustí, mě málem zabily. A taky jsem se trochu bál, že nás někdo předběhne.</p>
+
+<p><em>Díky Ondro za naučení trpělivosti, dodání odvahy a zábavné moderování srazů!</em></p>
+
+<h2>Zrození 1. společného místa - web Symfony.cz</h2>
+
+<p>Přes léto tak alespoň vznikly stránky. Přes doménu Symfony.cz jsem se dostal k <a href="http://www.defr.cz/">Dennisovi Fridrichovi</a>. Hned na prvním obědě jsem poznal, že jednou budeme dobří přátelé. A taky že jo - o pár měsíců později jsme spolu byli <a href="http://pariscon2015.symfony.com/">v Paříži na SymfonyConu</a>. Dennis dal dohromady <a href="http://www.symfony.cz">první verzi stránek</a>, která fakt měla šťávu.</p>
+
+<p><em>Díky Dennisi za dobrý vkus, investovaný čas a sestříhání nádherných záznamů ze srazů!</em></p>
+
+<h2>Jaký byl 0. sraz?</h2>
+
+<p>Přišlo září a 0. sraz - rozhodli jsme se, že to bude poslední čtvrtek v měsíci. Jako brněnská náplavka jsem v Praze neznal žádnou hospodu, už vůbec ne pro 20-30 lidí, které jsme čekali. Podaří se nám vůbec najít nějákou hospodu s takovou kapacitou, rychlým internetem a dobrým pivem?</p>
+
+<p><em>Tady patří velké díky <a href="https://www.martinhujer.cz/">Martinovi Hujerovi</a>, který mi nakonec pomohl první hospodu zamluvit.</em></p>
+
+<p><br></p>
+
+<p>Na sraz se nám přihlásilo přes 50 lidí. Co teď? Kam ty lidi dáme?</p>
+
+<p><em>Díky <a href="http://pepa.info/">Petře Pavle</a> za nalezení lepšího místa na poslední chvíli a záchranu 0. srazu - jinak bychom si asi seděli na klíně.</em></p>
+
+<h2>Kdo se k nám ještě přidal na cestě k Symfony komunitě?</h2>
+
+<p>Už jsme docela slušně rozjetí, takže dál už jen stručně:</p>
+
+<ul>
+<li>Díky <a href="https://twitter.com/honzajavorek">Honzovi Javorkovi</a> za předání cenných 4letých zkušeností při řízení velkých komunit!</li>
+<li>Díky <a href="https://twitter.com/svecmichal">Michalovi Švecovi</a>, že mi vytrvale doporučoval seriál <a href="http://symfony.com/blog/create-your-own-framework-on-top-of-the-symfony-components">Create your own framework on top of the Symfony Components</a>, i když jsem mu první rok vůbec nerozuměl! </li>
+<li>Díky lidem z <a href="http://designeo.cz/">Designeo.cz</a>, <a href="http://etnetera.cz/">Etnetera.cz</a>, <a href="http://jobs.cz/">Jobs.cz</a>, <a href="http://skrz.cz/">Skrz.cz</a>, <a href="http://bandzone.cz/">Bandzone.cz</a> a <a href="http://shipito.cz/">Shipito.cz</a> za ujasnění si konceptu propagace firem, který jsme pak začali nabízet! </li>
+<li>Díky <a href="https://www.lmc.eu/">Lmc.eu</a> za první sraz v pořádné firmě s chutným rautem a vychlazeným pivem!</li>
+<li>Díky <a href="http://kvitekmedovy.rajce.idnes.cz/">Lucce</a> <a href="https://www.linkedin.com/in/patoprstalucia">Patoprsté</a> za profesionální fotky s rychlým dodáním! </li>
+<li>Díky <a href="https://www.shopsys.cz/">Shopsys.cz</a> za srdečnou spolupráci, organizaci pravidelných srazů v Ostravě a propagaci na <a href="http://www.phplive.cz/">PHPLive</a> a <a href="http://www.barcampostrava.cz/">ostravském BacCampu</a>!</li>
+<li>Díky <a href="https://twitter.com/jakubkulhan">Jakubovi Kulhánovi</a> za <a href="https://github.com/skrz">skvělé bundly</a> a ještě lepší talky o Symfony u nás!</li>
+<li>Díky <a href="https://twitter.com/skrzczdev">Skrz.cz Developers</a> za srdečnou podporu na sociálních sítích!</li>
+<li>Díky <a href="https://twitter.com/hassmanm">Martinovi Hassmanovi</a> za podporu při psaní <a href="https://www.zdrojak.cz/serialy/symfony-po-kruckach/">prvního seriálu na zdrojak.cz</a> a za jeho svatou trpělivost se všemi 10 autory!</li>
+<li>Díky <a href="https://twitter.com/iamchemix">Honzovi Černému</a> za inspiraci v Nette komunitě a za to, že dorazil na náš 1. sraz - byla to pro nás velká pocta!</li>
+<li>Díky <a href="https://twitter.com/petrnikolas">Petrovi Prokopovi</a> za <a href="https://www.facebook.com/events/628065150674904/">nastartování Symfony komunity v Hradci Králové</a>! </li>
+<li>Díky <a href="https://twitter.com/vasekpurchart">Vaškovi Purchartovi</a> za přínosný <a href="https://www.youtube.com/watch?v=f93mNBJ-IUA">talk o Optimalizaci Symfony na devu</a>!</li>
+<li>Díky <a href="https://www.michalspacek.cz/">Michovali Špačkovi</a> za vedení <a href="https://www.facebook.com/groups/modryslon">FB skupiny Modrý slon</a>, díky které jsme mohli udělat radost 5 lidem černým Symfony sloníkem až z daleké Paříže!</li>
+<li>Díky <a href="https://twitter.com/petr_vacha">Petrovi Váchovi</a>, že se po 5 letech v Nette vydal cestou Symfony a přišel s nápadem napsat o Symfony knížku!</li>
+<li>Díky <a href="https://www.linkedin.com/in/ka%C4%8Dka-bl%C3%A1hov%C3%A1-828677a6">Kačce Bláhové</a> za inspiraci a rozšíření obzorů, kam dál je možné komunitu vést!</li>
+<li>Díky <a href="https://twitter.com/klatys">Honzovi Klatovi</a> za nápad na Symfony foundation, za to, že se mnou půjde přednášet na <a href="http://devel.cz/konference">Devel konferenci</a>, a taky za to, že dává do kupy první českou Symfony konferenci!</li>
+<li>Díky <a href="https://twitter.com/matej_21">Davidovi Matějkovi</a>, že i když patří mezi nejaktivnější přispěvatele na Nette fóru, tak si ve svém srdci našel kus místa i pro Symfony!  </li>
+<li>Díky <a href="https://twitter.com/zemistr">Martinovi Zemanovi</a> za shánění speakerů, dodávání přednášek pro začátečníky, nápad využít <a href="https://www.sli.do/home">sli.do</a> a <a href="https://www.facebook.com/groups/ceska.symfony.komunita.prace">vytvoření skupiny na pracovní nabídky</a>!</li>
+<li>Díky <a href="http://www.knesl.com/">Jirkovi Kneslovi</a> za možnost jít školit Symfony do firem!</li>
+<li>Díky <a href="https://twitter.com/roxtri_cz">Nikole Ježkové</a> za zařizování prvního srazu v Českých Budějovicích!</li>
+<li>Díky <a href="https://www.vimvic.cz/">VímVíc.cz</a> a <a href="https://www.instagram.com/monikavrbova">Monice Vrbové</a> za <a href="https://www.facebook.com/symfonisti/videos/969858443063966/">krásné promo video</a>!</li>
+<li>Huge thanks to <a href="https://twitter.com/javiereguiluz">Javier Eguiluz</a> for great support in <a href="http://symfony.com/blog/category/a-week-of-symfony">Week of Symfony</a>!</li>
+</ul>
+
+<p>Díky <a href="https://www.linkedin.com/in/klaraponczova">Klárce Ponczové</a> za podporu při celém tom všem a marketingové love brand tipy. Díky, mé Zlato!</p>
+
+<p>A také díky mému synovi, Matyášovi Votrubovi, za to, že mě na tuhle cestu nevědomky vyslal svým nečekaným příchodem.</p>
+
+<h2>A na kom to teď teda stojí?</h2>
+
+<p>Hlavně na vás! Protože nebýt tolika úžasných lidí, kteří jsou do Symfony zapálení, tak bych doteď v hospodě seděl sám :).</p>
+
+            </div>
+</article>
+
+
+            <h2>Tvůj názor mě zajímá</h2>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                 */
+                (function() {  // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//itsworthsharing.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </div>
+    </div>
+</div>
+
+            </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <p>
+                        &copy; 2015 Tomáš Votruba. Jede na <a href="https://sculpin.io/">Sculpin</a>.<br>
+                        Nádherná šablona inspirována <a href="http://webmozart.io">webmozart.io</a> - díky!
+                    </p>
+                </div>
+            </footer>
+
+            <script src="http://www.tomasvotruba.cz/js/prism.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+                            <script type="text/javascript">
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                    ga('create', 'UA-46082345-1', 'auto');
+                    ga('send', 'pageview');
+                </script>
+                    </div>
+
+        <script id="dsq-count-scr" src="http://itsworthsharing.disqus.com/count.js" async></script>
+    </body>
+</html>

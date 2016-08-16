@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autowired controllers as services for lazy people | Tomáš Votruba - Nette a Symfony školení</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+                <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9:all.js"></script>
+
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/prism.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="google-site-verification" content="8AQYRvJvZguoIfpFPVXwN2uxwiDJ_wj9qTbklsLvu54" />
+
+            <meta property="og:type" content="article" />
+    <meta property="og:title" content="Autowired controllers as services for lazy people" />
+    <meta property="og:description" content="With new autowiring feature in Symfony 2.8+, it is now easier to manage dependencies for services. But what about for controllers? Unfortunately, there are 3 annoying steps you have to do. Today I will show you, how to reduce them to 0." />
+    <meta property="og:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+    <meta property="og:url" content="http://www.tomasvotruba.cz/blog/2016/03/10/autowired-controllers-as-services-for-lazy-people" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Autowired controllers as services for lazy people" />
+    <meta name="twitter:description" content="With new autowiring feature in Symfony 2.8+, it is now easier to manage dependencies for services. But what about for controllers? Unfortunately, there are 3 annoying steps you have to do. Today I will show you, how to reduce them to 0." />
+    <meta name="twitter:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+
+        <link rel="alternate" type="application/atom+xml" href="http://www.tomasvotruba.cz/atom.xml" title="Tomáš Votruba - Nette a Symfony školení články" />
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                    document,'script','//connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '201338863559186');
+            fbq('track', "PageView");</script>
+        <noscript><img height="1" width="1" style="display:none"
+                       src="https://www.facebook.com/tr?id=201338863559186&ev=PageView&noscript=1"
+            /></noscript>
+        <!-- End Facebook Pixel Code -->
+    </head>
+    <body>
+        <div class="body">
+
+            <header class="header">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Menu</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="logo"><a href="/">Tomáš Votruba</a></li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/reference">Reference</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/skoleni">Co vám můžu předat</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/blog">Blog</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/cenik">Ceník</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/kontakt">Kontakt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="mainContent">
+                
+<div class="page">
+    <div class="container">
+        <div class="main">
+            <article class="blog-post">
+    
+    <header>
+        <h1>
+            <a href="/blog/2016/03/10/autowired-controllers-as-services-for-lazy-people">Autowired controllers as services for lazy people</a>
+        </h1>
+
+        <ul class="list-inline list-inline-box">
+    <li class="hidden-xs">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2016-03-Thu">10. 3. 2016</time>
+    </li>
+
+            <li>
+            <em class="fa fa-tags fa-fw"></em>
+                            <a href="/blog/clanky-o/Symfony">Symfony</a>,                             <a href="/blog/clanky-o/Symplify">Symplify</a>,                             <a href="/blog/clanky-o/controller">controller</a>,                             <a href="/blog/clanky-o/autowire">autowire</a>                    </li>
+    
+    <li>
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 minutes of reading</strong>
+    </li>
+
+    <li>
+        <em class="fa fa-fw fa-comments"></em>
+        <a href="http://tomasvotruba.cz/blog/2016/03/10/autowired-controllers-as-services-for-lazy-people/#disqus_thread">
+            comments
+        </a>
+    </li>
+</ul>
+
+    </header>
+
+    <div>
+                    <p class="perex">With new autowiring feature in Symfony 2.8+, it is now easier to manage dependencies for services. But what about for controllers? Unfortunately, there are 3 annoying steps you have to do. Today I will show you, how to reduce them to 0.</p>
+
+<h3>Disclaimer: Why even use controllers as services?</h3>
+
+<p><strong>The goal of this article is not to discuss pro and cons of "controller as service" (further CAS) approach</strong>. If you 
+haven't decided yet to use CAS, I recommend checking these articles:</p>
+
+<ul>
+<li><a href="https://knpuniversity.com/screencast/question-answer-day/controllers-services">Symfony2: Make my Controllers Services?</a> [released 2013 by KNPUniversity]</li>
+<li><a href="http://php-and-symfony.matthiasnoback.nl/2014/06/how-to-create-framework-independent-controllers">Symfony2: How to create framework independent controllers?</a> [released 2014]</li>
+<li><a href="http://richardmiller.co.uk/2011/04/15/symfony2-controller-as-service">Symfony2: Controller as Service</a> [released 2011]</li>
+</ul>
+
+<p><br></p>
+
+<p>But now, back to the topic.</p>
+
+<h2>Autowire service? Easy!</h2>
+
+<p>With <a href="https://dunglas.fr/2015/10/new-in-symfony-2-83-0-services-autowiring/">autowire feature</a>, managing dependencies for services is now as simple as:</p>
+
+<pre><code class="language-yaml">services:
+    post.publisher:
+        class: PostPublisher
+        autowire: true # all you got to do is add this line
+</code></pre>
+
+<h2>Autowire controller? Hell!</h2>
+
+<p>Managing dependencies for controllers in same way is complicated. To apply the same effect, you have to make following 3 steps:</p>
+
+<ol>
+<li><p>Register controller manually as service to the config</p>
+
+<pre><code class="language-yaml"># app/config/services.yml
+services:
+    post_controller: # you have to use this name everywhere, so pick it wisely
+        class: PostController
+        autowire: true
+</code></pre></li>
+<li><p>Add <code>@Route</code> annotation with service name</p>
+
+<pre><code class="language-php">// src/AppBundle/Controller/PostController.php
+namespace AppBundle\Controller\PostController;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
+/**
+ * @Route(service="post_controller") # watch for typo here!
+ */
+class PostController
+{
+    public function listAction()
+    {
+    }
+}
+</code></pre>
+
+<p>or route using service name:</p>
+
+<pre><code class="language-yaml"># app/config/routing.yml
+post_list:
+    path: /post-list
+    defaults: 
+        _controller: post_controller:listAction
+        # and not bundle like approach
+        # _controller: AppBundle:Post:list
+</code></pre>
+
+<blockquote>
+  <p>This difference is so difficult to spot, that it <a href="http://stackoverflow.com/a/27221394/1348344">created question on StackOverflow</a>.</p>
+</blockquote></li>
+<li><p>Finally, you have to use service name and single colon for referring:</p>
+
+<pre><code class="language-php">// any controller
+$this-&gt;forward('post_controller:listAction'));
+</code></pre></li>
+</ol>
+
+<blockquote>
+  <p>There is <a href="http://stackoverflow.com/questions/31366074/how-exactly-can-i-define-a-controller-as-service-using-annotations/31366589#31366589">nice answer on StackOverflow explaining with more details</a>.</p>
+</blockquote>
+
+<p>This process is exhausting already and difficult to remember.</p>
+
+<h3>Did you make it? Here comes much deeper hell</h3>
+
+<p>Even if you do manage to finish these steps, <strong>these issues will appear</strong>:</p>
+
+<ul>
+<li><p><a href="http://stackoverflow.com/questions/33857659/symfony-autowiring-services-with-the-controller">drawback</a> of FrameworkBundle, when it tries to autowire controller 
+<img src="http://i.stack.imgur.com/r4cBD.png"></p></li>
+<li><p>it's complicated to apply constructor dependency injection for extended 3rd party controllers (Sonata, FOS...), due to missing step 2 and 3 (that were mentioned above) and the "bundle naming" inside the bundle's code</p></li>
+</ul>
+
+<h3>Is there some way back from hell to heaven?</h3>
+
+<p>Author of autowiring feature and Symfony core contributor Kévin Dunglas <a href="https://github.com/symfony/symfony/pull/16863#issuecomment-162221353">sees similar problem</a> and <a href="https://dunglas.fr/2016/01/dunglasactionbundle-symfony-controllers-redesigned/">proposes solution with ADR pattern</a>. I think it's the right direction, but it bends controllers too much.</p>
+
+<p>But my goal is to keep controllers the same way they are now, and just add support for...</p>
+
+<h2>Autowiring in controllers</h2>
+
+<p>So I made <a href="https://github.com/Symplify/ControllerAutowire">Symplify\ControllerAutowire</a> bundle, that solves all problems that are mentioned above by following steps:</p>
+
+<ul>
+<li>find controllers in <code>/src</code> directory</li>
+<li>register them as services</li>
+<li>autowire its constructors</li>
+<li>handle routing properly for both "service name" and "bundle name" approaches</li>
+<li>and all on compile time</li>
+</ul>
+
+<p>Let's try it together.</p>
+
+<h3>1. Install package</h3>
+
+<pre><code class="langauge-yml">composer require symplify/controller-autowire
+</code></pre>
+
+<h3>2. Register bundle</h3>
+
+<pre><code class="language-php">// app/AppKernel.php
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = [
+            new Symplify\ControllerAutowire\SymplifyControllerAutowireBundle(),
+            // ...
+        ];
+    }
+}
+</code></pre>
+
+<h3>3. Add some dependency for your controller via constructor</h3>
+
+<pre><code class="language-php">// src/AppBundle/Controller/DefaultController.php
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
+
+class DefaultController extends Controller
+{
+    /**
+     * @var EventDispatcherInterface
+     */
+    private $eventDispatcher;
+
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this-&gt;eventDispatcher = $eventDispatcher;
+    }
+
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function indexAction(Request $request)
+    {
+        $this-&gt;eventDispatcher-&gt;dispatch('someEvent');
+
+        return $this-&gt;render('default/index.html.twig', [
+            // ...
+        ]);
+    }
+}
+</code></pre>
+
+<p>And that's it!</p>
+
+<p>For further use, <strong>just check Readme for <a href="https://github.com/Symplify/ControllerAutowire">Symplify/ControllerAutowire</a>.</strong></p>
+
+<h2>Best practise solution - proven in many PHP projects</h2>
+
+<p>Check them out:</p>
+
+<ul>
+<li><a href="nette.org">Nette</a> with <a href="https://github.com/nette/application/pull/56">presenter autowire</a>, based on <a href="https://filip-prochazka.com/blog/presentery-v-di-containeru">Filip Prochazka's extension</a></li>
+<li><a href="http://php-di.org/doc/frameworks/silex.html#controllers-as-services">PHP-DI</a></li>
+<li><a href="https://laravel.com/docs/5.0/controllers#dependency-injection-and-controllers">Laravel with constructor injection support for controllers</a></li>
+<li>and <a href="https://github.com/J7mbo/Aurex">Auryn</a> that adds this feature to Silex </li>
+</ul>
+
+            </div>
+</article>
+
+
+            <h2>I care about your opinion</h2>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                                    var disqus_config = function () {
+                        this.language = "en";
+                    };
+                
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                 */
+                (function() {  // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//itsworthsharing.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </div>
+    </div>
+</div>
+
+            </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <p>
+                        &copy; 2015 Tomáš Votruba. Jede na <a href="https://sculpin.io/">Sculpin</a>.<br>
+                        Nádherná šablona inspirována <a href="http://webmozart.io">webmozart.io</a> - díky!
+                    </p>
+                </div>
+            </footer>
+
+            <script src="http://www.tomasvotruba.cz/js/prism.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+                            <script type="text/javascript">
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                    ga('create', 'UA-46082345-1', 'auto');
+                    ga('send', 'pageview');
+                </script>
+                    </div>
+
+        <script id="dsq-count-scr" src="http://itsworthsharing.disqus.com/count.js" async></script>
+    </body>
+</html>

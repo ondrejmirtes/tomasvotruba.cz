@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ovládni Doctrine migrace v Nette | Tomáš Votruba - Nette a Symfony školení</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+                <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9:all.js"></script>
+
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/prism.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="google-site-verification" content="8AQYRvJvZguoIfpFPVXwN2uxwiDJ_wj9qTbklsLvu54" />
+
+            <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ovládni Doctrine migrace v Nette" />
+    <meta property="og:description" content="Pokud používáte Doctrine, Nette a potřebujete měnit databázi, budou se vám hodit migrace." />
+    <meta property="og:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+    <meta property="og:url" content="http://www.tomasvotruba.cz/blog/2015/11/02/ovladni-doctrine-migrace-v-nette" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ovládni Doctrine migrace v Nette" />
+    <meta name="twitter:description" content="Pokud používáte Doctrine, Nette a potřebujete měnit databázi, budou se vám hodit migrace." />
+    <meta name="twitter:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+
+        <link rel="alternate" type="application/atom+xml" href="http://www.tomasvotruba.cz/atom.xml" title="Tomáš Votruba - Nette a Symfony školení články" />
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                    document,'script','//connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '201338863559186');
+            fbq('track', "PageView");</script>
+        <noscript><img height="1" width="1" style="display:none"
+                       src="https://www.facebook.com/tr?id=201338863559186&ev=PageView&noscript=1"
+            /></noscript>
+        <!-- End Facebook Pixel Code -->
+    </head>
+    <body>
+        <div class="body">
+
+            <header class="header">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Menu</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="logo"><a href="/">Tomáš Votruba</a></li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/reference">Reference</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/skoleni">Co vám můžu předat</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/blog">Blog</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/cenik">Ceník</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/kontakt">Kontakt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="mainContent">
+                
+<div class="page">
+    <div class="container">
+        <div class="main">
+            <article class="blog-post">
+    
+    <header>
+        <h1>
+            <a href="/blog/2015/11/02/ovladni-doctrine-migrace-v-nette">Ovládni Doctrine migrace v Nette</a>
+        </h1>
+
+        <ul class="list-inline list-inline-box">
+    <li class="hidden-xs">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2015-11-Mon">2. 11. 2015</time>
+    </li>
+
+            <li>
+            <em class="fa fa-tags fa-fw"></em>
+                            <a href="/blog/clanky-o/Doctrine">Doctrine</a>,                             <a href="/blog/clanky-o/Nette">Nette</a>                    </li>
+    
+    <li>
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>6 minut čtení</strong>
+    </li>
+
+    <li>
+        <em class="fa fa-fw fa-comments"></em>
+        <a href="http://tomasvotruba.cz/blog/2015/11/02/ovladni-doctrine-migrace-v-nette/#disqus_thread">
+            Komentáře
+        </a>
+    </li>
+</ul>
+
+    </header>
+
+    <div>
+                    <p class="perex">Pokud používáte Doctrine, Nette a potřebujete měnit databázi, budou se vám hodit migrace.</p>
+
+<p>Stejně jako Kdyby/Doctrine využívá doctrine/doctrine2, my použijeme <a href="https://github.com/doctrine/migrations">doctrine/migrations</a>. Ty si <a href="https://packagist.org/packages/doctrine/migrations/stats">denně stáhne přes 9 000 programátorů</a>, takže se nemusíte bát o jeho kvalitu.</p>
+
+<p>Do Nette jsem připravil integraci pomocí balíčku <a href="https://github.com/Zenify/DoctrineMigrations">Zenify/DoctrineMigrations</a>.</p>
+
+<h2>Instalace ve 3 krocích</h2>
+
+<h3>1. Balíček nainstalujeme přes <code>composer</code>:</h3>
+
+<pre><code class="language-bash">$ composer require zenify/doctrine-migrations
+</code></pre>
+
+<h3>2. Přidáme rozšíření do <code>config.neon</code>:</h3>
+
+<pre><code class="language-yaml">extensions:
+    migrations: Zenify\DoctrineMigrations\DI\MigrationsExtension
+    eventDispatcher: Symnedi\EventDIspatcher\DI\EventDispatcherExtension
+
+    # nesmí chybět Kdyby\Doctrine nebo jiná integrace Doctrine
+</code></pre>
+
+<h3>3. Ověříme</h3>
+
+<p>Ověření provedeme spuštěním z přikazového řádku. V Nette to znamená využít Kdyby\Console.</p>
+
+<p>Zkusíme vypsat všechny příkazy týkající se migrací.</p>
+
+<pre><code class="language-bash">$ php www/index.php list migrations
+</code></pre>
+
+<p>Pokud vidíme přehled příkazů, máme vyhráno a můžeme používat.</p>
+
+<pre><code class="language-bash"># ...
+
+Available commands for the "migrations" namespace:
+  migrations:diff      Generate a migration by comparing your current database to your mapping information.
+  migrations:execute   Execute a single migration version up or down manually.
+  migrations:generate  Generate a blank migration class.
+  migrations:migrate   Execute a migration to a specified version or the latest available version.
+  migrations:status    View the status of a set of migrations.
+  migrations:version   Manually add and delete migration versions from the version table.
+</code></pre>
+
+<blockquote>
+  <p>Čtete raději commity? Mrkněte na <a href="https://github.com/TomasVotruba/doctrine-migrations-sandbox/commits/master">sandbox na Githubu</a>.</p>
+</blockquote>
+
+<hr />
+
+<h2>Profi workflow ve 4 krocích</h2>
+
+<p>Rád bych s vámi podělil o to, jak přistupujeme k migracím my v <a href="http://lekarna.cz/">Lékárna.cz</a>.</p>
+
+<p>Od šéfa jsme dostali zadání: <em>vytvořit tabulku na články</em>.</p>
+
+<h3>1. Zkontrolujeme status</h3>
+
+<pre><code class="language-bash">$ php www/index.php migrations:status
+</code></pre>
+
+<p>Důležité je číslo v posledním řádku ("New Migrations"). Vypadá to, že vše je aktuální, tak můžeme pokračovat.</p>
+
+<pre><code class="language-bash"> == Configuration
+
+    &gt;&gt; Name:                                               Doctrine Database Migrations
+    &gt;&gt; Database Driver:                                    pdo_sqlite
+    &gt;&gt; Database Name:
+    &gt;&gt; Configuration Source:                               manually configured
+    &gt;&gt; Version Table Name:                                 doctrine_migrations
+    &gt;&gt; Migrations Namespace:                               Migrations
+    &gt;&gt; Migrations Directory:                               /var/www/doctrine-migrations-sandbox/app/../migrations
+    &gt;&gt; Previous Version:                                   Already at first version
+    &gt;&gt; Current Version:                                    0
+    &gt;&gt; Next Version:                                       Already at latest version
+    &gt;&gt; Latest Version:                                     0
+    &gt;&gt; Executed Migrations:                                0
+    &gt;&gt; Executed Unavailable Migrations:                    0
+    &gt;&gt; Available Migrations:                               0
+    &gt;&gt; New Migrations:                                     0
+</code></pre>
+
+<p>Pokud máme "New Migrations" větší než 0, tak je nejdříve aplikujeme (<a href="#apply-new-migrations">viz krok 4.</a>).</p>
+
+<h3>2. Vytvoříme si prázdnou migraci</h3>
+
+<pre><code class="language-bash">$ php www/index.php migrations:generate
+</code></pre>
+
+<p>Název migrace je generován automaticky dle timestampu. Tady je použita defaultní složka <code>/migrations</code>.</p>
+
+<pre><code class="language-bash">Loading configuration from the integration code of your framework (setter).
+Generated new migration class to "/var/www/doctrine-migrations-sandbox/app/../migrations/Version20151031185405.php"
+</code></pre>
+
+<h3>3. Přidáme SQL příkazy</h3>
+
+<p>Otevřeme si novou migraci <code>/migrations/Version20151031185405.php</code> a doplníme metody.</p>
+
+<ul>
+<li><code>up()</code> je použita defaultně, při migraci na novější verzi - obvykle <strong>přidáváme data</strong></li>
+<li><code>down()</code> pak migruje zpět na starší verzi - obvykle <strong>mažeme data</strong> </li>
+</ul>
+
+<p>Více bude jasnější ze samotného SQL zápisu:</p>
+
+<pre><code class="language-php">namespace Migrations;
+
+use Doctrine\DBAL\Migrations\AbstractMigration;
+use Doctrine\DBAL\Schema\Schema;
+
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+class Version20151031185405 extends AbstractMigration
+{
+
+    /**
+     * @param Schema $schema
+     */
+    public function up(Schema $schema)
+    {
+        $this-&gt;addSql('CREATE TABLE "article" ("id" serial NOT NULL, "name" text NOT NULL);');
+    }
+
+
+    /**
+     * @param Schema $schema
+     */
+    public function down(Schema $schema)
+    {
+        $this-&gt;addSql('DROP TABLE "article";');
+    }
+
+}
+</code></pre>
+
+<p>Tím naše práce s SQL končí.</p>
+
+<p>Když znovu dáme status...</p>
+
+<pre><code>$ php www/index.php migrations:status
+</code></pre>
+
+<p>...vidíme, že máme jednu novou migraci (dosud neaplikovanou na databázi).</p>
+
+<pre><code class="language-bash"># ...
+
+    &gt;&gt; Executed Migrations:                                0
+    &gt;&gt; Executed Unavailable Migrations:                    0
+    &gt;&gt; Available Migrations:                               1
+    &gt;&gt; New Migrations:                                     1
+</code></pre>
+
+<p><a name="apply-new-migrations"></a></p>
+
+<h3>4. Teď si konečně sáhneme na databázi</h3>
+
+<p>Aplikujeme všechny nové změny:</p>
+
+<pre><code class="language-bash">php www/index.php migrations:migrate
+</code></pre>
+
+<pre><code class="language-bash">Loading configuration from the integration code of your framework (setter).
+
+                    Doctrine Database Migrations
+
+
+WARNING! You are about to execute a database migration that could result in schema changes and data lost.
+Are you sure you wish to continue? (y/n)
+</code></pre>
+
+<p>Potvrdíme, že cheme opravdu migrovat: "y"</p>
+
+<pre><code class="language-bash">Migrating up to 20151031185555 from 0
+
+  ++ migrating 20151031185555
+
+     -&gt; CREATE TABLE "article" ("id" serial NOT NULL, "name" text NOT NULL);
+
+  ++ migrated (0.02s)
+
+  ------------------------
+
+  ++ finished in 0.02
+  ++ 1 migrations executed
+  ++ 1 sql queries
+</code></pre>
+
+<p>A vidíme, že tabulka <code>article</code> byla úspěšně vytvořena.</p>
+
+<p><br></p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015/09/15/7-success-meme.jpg" alt="You own this!">
+</div>
+
+            </div>
+</article>
+
+
+            <h2>Tvůj názor mě zajímá</h2>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                 */
+                (function() {  // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//itsworthsharing.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </div>
+    </div>
+</div>
+
+            </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <p>
+                        &copy; 2015 Tomáš Votruba. Jede na <a href="https://sculpin.io/">Sculpin</a>.<br>
+                        Nádherná šablona inspirována <a href="http://webmozart.io">webmozart.io</a> - díky!
+                    </p>
+                </div>
+            </footer>
+
+            <script src="http://www.tomasvotruba.cz/js/prism.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+                            <script type="text/javascript">
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                    ga('create', 'UA-46082345-1', 'auto');
+                    ga('send', 'pageview');
+                </script>
+                    </div>
+
+        <script id="dsq-count-scr" src="http://itsworthsharing.disqus.com/count.js" async></script>
+    </body>
+</html>

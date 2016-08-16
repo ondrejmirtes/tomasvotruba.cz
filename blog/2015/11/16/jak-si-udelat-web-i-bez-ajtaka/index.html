@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jak si levně udělat živý web, i když nejsi ajťák | Tomáš Votruba - Nette a Symfony školení</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+                <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9:all.js"></script>
+
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/theme/webmozart/prism.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.tomasvotruba.cz/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="google-site-verification" content="8AQYRvJvZguoIfpFPVXwN2uxwiDJ_wj9qTbklsLvu54" />
+
+            <meta property="og:type" content="article" />
+    <meta property="og:title" content="Jak si levně udělat živý web, i když nejsi ajťák" />
+    <meta property="og:description" content="Znáš pojmy jako hosting, doména, HTML, CSS, FTP, šablona, Wordpress nebo Github? Máš vyhráno, dál nečti a běž se podívat na svou krásnou online vizitku." />
+    <meta property="og:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+    <meta property="og:url" content="http://www.tomasvotruba.cz/blog/2015/11/16/jak-si-udelat-web-i-bez-ajtaka" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Jak si levně udělat živý web, i když nejsi ajťák" />
+    <meta name="twitter:description" content="Znáš pojmy jako hosting, doména, HTML, CSS, FTP, šablona, Wordpress nebo Github? Máš vyhráno, dál nečti a běž se podívat na svou krásnou online vizitku." />
+    <meta name="twitter:image" content="http://www.tomasvotruba.cz/images/posts/thumbnail/" />
+
+        <link rel="alternate" type="application/atom+xml" href="http://www.tomasvotruba.cz/atom.xml" title="Tomáš Votruba - Nette a Symfony školení články" />
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                    document,'script','//connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '201338863559186');
+            fbq('track', "PageView");</script>
+        <noscript><img height="1" width="1" style="display:none"
+                       src="https://www.facebook.com/tr?id=201338863559186&ev=PageView&noscript=1"
+            /></noscript>
+        <!-- End Facebook Pixel Code -->
+    </head>
+    <body>
+        <div class="body">
+
+            <header class="header">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Menu</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="logo"><a href="/">Tomáš Votruba</a></li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/reference">Reference</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/skoleni">Co vám můžu předat</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/blog">Blog</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/cenik">Ceník</a>
+                                </li>
+                                <li >
+                                    <a href="http://www.tomasvotruba.cz/kontakt">Kontakt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="mainContent">
+                
+<div class="page">
+    <div class="container">
+        <div class="main">
+            <article class="blog-post">
+    
+    <header>
+        <h1>
+            <a href="/blog/2015/11/16/jak-si-udelat-web-i-bez-ajtaka">Jak si levně udělat živý web, i když nejsi ajťák</a>
+        </h1>
+
+        <ul class="list-inline list-inline-box">
+    <li class="hidden-xs">
+        <em class="fa fa-calendar fa-fw"></em>
+        <time datetime="2015-11-Mon">16. 11. 2015</time>
+    </li>
+
+            <li>
+            <em class="fa fa-tags fa-fw"></em>
+                            <a href="/blog/clanky-o/Gihub">Gihub</a>,                             <a href="/blog/clanky-o/web">web</a>,                             <a href="/blog/clanky-o/BeEager">BeEager</a>                    </li>
+    
+    <li>
+        <em class="fa fa-clock-o fa-fw"></em>
+        <strong>3 minuty čtení</strong>
+    </li>
+
+    <li>
+        <em class="fa fa-fw fa-comments"></em>
+        <a href="http://tomasvotruba.cz/blog/2015/11/16/jak-si-udelat-web-i-bez-ajtaka/#disqus_thread">
+            Komentáře
+        </a>
+    </li>
+</ul>
+
+    </header>
+
+    <div>
+                    <p class="perex">
+    Znáš pojmy jako hosting, doména, HTML, CSS, FTP, šablona, Wordpress nebo Github?<br>
+    Máš vyhráno, dál nečti a běž se podívat na svou krásnou online vizitku.
+</p>
+
+<p>Na <a href="http://myeagers.beeager.com/">MyEagers konferenci</a> jsem se stal svědkem workshopu <a href="https://www.facebook.com/events/885079758208224/permalink/896505960398937/">Lekce svádění aneb jak to udělat online tak, aby Tě chtěli</a>. <strong>Kopa šikovných hacků, které ti dají světelný náskok na tvé pracovní cestě</strong>.</p>
+
+<p>Cílem bylo ukázat, že si i web jako <a href="http://jakserodicopywriter.cz">jakserodicopywriter.cz</a> můžeš udělat za víkend a 150 Kč.</p>
+
+<p>Chceš si taky udělat podobný web, ale tvorba webových stránek je ti zatím cizí? Ukážeme si, jak to zvládnout levou zadní.</p>
+
+<p>Tohle využiješ, pokud...</p>
+
+<h3>...chceš vytvořit</h3>
+
+<ul>
+<li>webové stránky na vlastní doméně</li>
+<li>nabídnout lidem své služby <em>nebo</em></li>
+<li>získat konkrétní pracovní pozici</li>
+</ul>
+
+<h3>Na co se spolu podíváme</h3>
+
+<ul>
+<li>jak si koupit doménu</li>
+<li>jak ji propojit s webem online </li>
+<li>jak si stránky upravit jen pomocí prohlížeče</li>
+</ul>
+
+<h2>Jak na to ve 3 krocích</h2>
+
+<h3>1. Moje první doména</h3>
+
+<ol>
+<li>Vymysli si doménu - to je to, co člověk zadá do adresního řádku (např. www.tadybudetvujtext.cz)</li>
+<li>Zjisti, <a href="https://hosting.wedos.com/cs/domain-check.html?affd=79496">jestli je doména ještě volná</a></li>
+<li>Kup si ji - my jsme v tomto případě použili český hosting <a href="https://hosting.wedos.com/cs/domain-check.html?affd=79496">Wedos.cz</a>
+
+<ul>
+<li>aktuálně stojí 151 Kč, to bude veškerá tvá investice</li>
+<li>u možnosti webhostingu dej "neobjednávat"</li>
+</ul></li>
+</ol>
+
+<h3>2. První web - Github</h3>
+
+<p>Stránky můžeš mít umístěné na Github zdarma. Github je sociální síť nejen pro ajťáky, kde můžeš sdílet zdrojový kód.</p>
+
+<ol>
+<li>registruj se na <a href="https://github.com/">Githubu</a></li>
+<li><p>"forkni" si mé <a href="https://github.com/TomasVotruba/php7.cz">ukázkové stránky</a> - tím si <strong>základ pro vlastní stránku překopíruješ k sobě</strong> a můžeš si ji dál upravovat, jak budeš chtít</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/github-1.png" alt="Forkneme = stáhneme k sobě">
+    <br>
+    <em>Klikni na tlačítko "fork"</em>
+</div>
+
+<p><br></p></li>
+<li>mé stránky už teď najdeš na adrese <a href="http://tomasvotruba.github.io/php7.cz">tomasvotruba.github.io/php7.cz</a></li>
+<li>ty své pak na <code>http://&lt;tve-jmeno&gt;.github.io/&lt;tva-domena&gt;.cz</code></li>
+</ol>
+
+<h3>3. Propojení domény a webu</h3>
+
+<p>Teď už máme doménu a stránky online, ale zatím jsou od sebe vzájemně oddělené. Teď nás čeká jejich propojení.</p>
+
+<h3>Na Githubu</h3>
+
+<ol>
+<li><p>otevři si nastavení svého webu</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/github-2.png" alt="Otevři 'Settings'">
+    <br>
+    <em>Otevři "Settings"</em>
+</div>
+
+<p><br></p></li>
+<li><p>přejmenuj složku na název tvé nové domény (v mém případě <code>php7.cz</code>)</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/github-3.png" alt="Napiš svou doménu">
+    <br>
+    <em>Napiš svou doménu</em>
+</div>
+
+<p><br></p></li>
+<li><p>ve složce uprav <code>CNAME</code> soubor</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/github-4.png" alt="Otevři soubor CNAME">
+    <br>
+    <em>Otevři CNAME soubor</em>
+</div>
+
+<p><br></p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/github-5.png" alt="Dej editovat">
+    <br>
+    <em>Dej editovat</em>
+</div>
+
+<p><br></p></li>
+<li>do prvního řádku napiš název své domény bez <code>http://www.</code>, tedy např. <code>php7.cz</code> </li>
+<li>dole klikni na "Commit changes", tedy "Uložit"</li>
+</ol>
+
+<p>Teď už ti zbývá poslední krok.</p>
+
+<h3>Na Wedosu</h3>
+
+<ol>
+<li>přihlaš se na Wedos a otevři si <a href="https://client.wedos.com/domain">seznam tvých domén</a> </li>
+<li>klikni na svou doménu</li>
+<li><p>dej "editovat DNS záznamy"</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/domain-dns-1.png" alt="Edituj DNS záznamy">
+    <br>
+    <em>Edituj DNS záznamy</em>
+</div>
+
+<p><br></p></li>
+<li><p>změň A záznam a smaž AAAA záznamy</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/domain-dns-2.png" alt="Edituj DNS záznamy" style="max-width:270px">
+    <br>
+    <em>Uprav oba záznamy - jeden s hvězdičkou a druhý bez</em>
+</div>
+
+<p><br></p></li>
+<li><p>IP adresu změň na <code>192.30.252.153</code> - to je adresa Githubu, tam kde tvé stránky teď sídlí</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/domain-dns-3.png" alt="Změň IP adresu">
+    <br>
+    <em>Změň IP adresu</em>
+</div>
+
+<p><br></p></li>
+<li><p>klikni na tlačítko "Aplikovat změny"</p>
+
+<div class="text-center">
+    <img src="/../../../../images/posts/2015-11-16/domain-dns-4.png" alt="Aplikuj změny">
+    <br>
+    <em>Aplikuj změny</em>
+</div>
+
+<p><br></p></li>
+</ol>
+
+<p>Tato operace může trvat pár desítek minut, tak si zatím dej kafe.</p>
+
+<p>Pak bude tvá doména směřovat na tvé stránky na Githubu.</p>
+
+<p>Když otevřeš svou doménu (v mém případě <a href="http://php7.cz">php7.cz</a>), uvidíš své stránky v plné kráse.</p>
+
+<p>A máme hotovo!</p>
+
+<p>Příště si ukážeme, jak si stránky vymazlit, představíme si základní HTML tagy (<strong>tučné písmo</strong>, <em>kurzíva</em>...) a naučíme se, jak přidat obrázky.</p>
+
+            </div>
+</article>
+
+
+            <h2>Tvůj názor mě zajímá</h2>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                 */
+                (function() {  // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//itsworthsharing.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </div>
+    </div>
+</div>
+
+            </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <p>
+                        &copy; 2015 Tomáš Votruba. Jede na <a href="https://sculpin.io/">Sculpin</a>.<br>
+                        Nádherná šablona inspirována <a href="http://webmozart.io">webmozart.io</a> - díky!
+                    </p>
+                </div>
+            </footer>
+
+            <script src="http://www.tomasvotruba.cz/js/prism.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+                            <script type="text/javascript">
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                    ga('create', 'UA-46082345-1', 'auto');
+                    ga('send', 'pageview');
+                </script>
+                    </div>
+
+        <script id="dsq-count-scr" src="http://itsworthsharing.disqus.com/count.js" async></script>
+    </body>
+</html>

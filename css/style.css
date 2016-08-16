@@ -1,0 +1,186 @@
+body {
+    font-family: "source-sans-pro", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5em;
+}
+
+
+.portrait-box .page-header {
+    padding-bottom: 10px;
+    margin: 1.2em 0 22px;
+}
+
+.portrait-text {
+    padding-top: .2em;
+}
+
+.portrait-image img {
+    margin-top: 2.5em;
+    border: 1px solid #EEE;
+}
+
+.lead {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    font-weight: 400;
+}
+
+#first-action-step {
+    margin-top: .3em;
+    padding-top: 1.3em;
+    border-top: 1px solid #CCC;
+    padding-bottom: .3em;
+}
+
+.edu-nette-logo {
+    margin-top: 1em;
+    width: 14em;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:focus {
+    background-color: #08c;
+    border-color: #08c;
+}
+
+.btn-primary:hover  {
+    background-color: #0af;
+    border-color: #0af;
+}
+
+
+pre {
+    border: none;
+    border-radius: 2px;
+}
+
+.blog-post img {
+    border-radius: 2px;
+}
+
+.blog-post img.post-thumbnail, .post-thumbnail {
+    margin: 0 .9em .2em 0;
+}
+
+/* true colors */
+.navbar {
+    background-color: #08c;
+}
+
+.navbar-default {
+    border-color: #0af;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #87CEFA;
+}
+
+.logo {
+    font-size: 1.3em;
+}
+
+@media (min-width: 768px) {
+    .logo {
+        margin-left: -1.6em;
+    }
+}
+
+.navbar-default .navbar-nav > li.logo a {
+    color: #FFF;
+    font-weight: 600;
+}
+
+.page-header h1 {
+    color: #08c;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+a, a:active {
+    color: #64991a;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #8CD02C;
+    text-decoration: none;
+}
+
+
+.perex {
+    font-size: 1.3em;
+    line-height: 1.5em;
+    margin: 1em 0;
+}
+
+h1, h1 small, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    font-family: source-sans-pro, sans-serif;
+}
+
+.blog-post h1 {
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: .5em;
+}
+
+article h2 {
+    font-size: 1.8em;
+}
+
+article h2, article h3 {
+    font-weight: 600;
+}
+
+.h3, h3 {
+    font-size: 1.23em;
+}
+
+.h4, h4 {
+    margin-top: 1.4em;
+    font-size: 1.08em;
+}
+
+
+blockquote {
+    font-family: "source-sans-pro", Helvetica, Arial, sans-serif;
+    margin: .7em 0;
+}
+
+code {
+    font-size: .97em;
+}
+
+#references .face {
+    margin-right: 1em;
+    float: left;
+    border-radius: 50%;
+}
+
+#references h2 {
+    font-size: 1.6em;
+    color: #8CD02C;
+}
+
+#references h3 {
+    margin-bottom: 0em;
+}
+
+#references h3 a {
+    text-decoration: underline;
+}
+
+#references h3 a:hover {
+    text-decoration: none;
+}
+
+#references h4 {
+    margin-bottom: 1.5em;
+}
+
+.main > .row > * {
+    margin-top: 1em;
+}
+
+#contact-lead p {
+    font-size: 1.5em;
+    line-height: 2.5em;
+}
